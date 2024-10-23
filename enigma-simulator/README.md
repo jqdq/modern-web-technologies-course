@@ -16,8 +16,8 @@ Materials on writing JS code:
 1. Retrieve the rotor data from the HTML using getElementById. Make sure these are numbers. Assign them to variables and log them to the console.
 2. Using `search` and `slice`/`array[index]`, find the index of the rotor data in the `alphabet` string and retrieve the corresponding letter from the `rotor1_translations` string. Log this to the console.
 3. Implement this as a function that takes the rotor data, and the letter as arguments and returns the translated letter.
-4. Implement a function for a reverse pass through the rotor.
-5. Use it to create a function that translates a letter through all the rotors.
+4. Implement the reverse pass using an additonal function parameter and an if statement.
+5. Use it to create a function that translates a letter through all the rotors and back.
 6. Using a loop, implement a function that translates a string through the rotors. Try implementing it with a `for` loop, `apply` loop, and a `forEach` loop. If you're feeling adventurous, try implementing it with a `while` loop. Doing these might award you extra points ;)
 7. Make sure the rotors move after each letter is translated. Rotor 2 and 3 should only move once per previous rotor's cycle.
 8. Retrieve the input string from the HTML, pass it through the rotors and write the output to the HTML.
