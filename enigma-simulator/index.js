@@ -1,5 +1,7 @@
 
-const rotor1_translations = "HIMBNSVTDXRKPAZOLUEJQWFCGY";
-const rotor2_translations = "WOZIEBAPNYGVHMCKRXLJFUDTSQ";
-const rotor3_translations = "QTSZGVRPYDHLMEBUJIAXWKCOFN";
+const rotor1_translations = "ZOJMGLEKYCHFDXBSUTPRQWVNIA";
+const rotor2_translations = "DFUAVBOPTLXJSRGHYNMICEZKQW";
+const rotor3_translations = "TJMGOQDRVBUXCZEYFHWAKISLPN";
+const reflector_translations = "KELHBSQDZOACURJWGNFXMYPTVI";
+
 const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
