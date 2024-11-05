@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polish Sejm MP Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .mp-card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .mp-card h2 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .mp-card p {
+            margin: 8px 0;
+        }
+    </style>
+    <script>
+        // Fun fact: I'm adding the random function to the arrays
+        Array.prototype.random = function () {
+            return this[Math.floor((Math.random()*this.length))];
+        }
+    </script>
+</head>
+<body>
+    <div class="mp-card">
+        <img alt="MP Photo" id="photo-display">
+        <h2 id="name-display">John Kowalski</h2>
+        <p>Club: <span id="club-display">Polska Partia Przyjaciół Piwa</span></p>
+        <p>Email: <a id="email-display" href="mailto:email@example.com">email@example.com</a></p>
+    </div>
+    <script>
+        // Use this to get a random MP from the list
+        ["a", "b", "c"].random();
+    </script>
+</body>
+</html>

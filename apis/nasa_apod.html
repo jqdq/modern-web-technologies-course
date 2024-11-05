@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astronomy Picture of the Day</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+        }
+        .container {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Astronomy Picture of the Day</h1>
+        <h2 id="title"></h2>
+        <img id="apod-image" src="" alt="Astronomy Picture of the Day">
+        <p id="description"></p>
+    </div>
+    <script defer>
+        // Async function to retrieve the API key from a JSON file
+        async function retrieve_api_key() {
+            var api_key_request = fetch("api_keys.json")
+
+            const api_key = await api_key_request.then(
+                response => response.json()
+            );
+            return api_key;
+        }
+    </script>
+</body>
+</html>
