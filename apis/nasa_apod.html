@@ -39,6 +39,17 @@
             );
             return api_key;
         }
+
+        retrieve_api_key().then(api_keys => {
+            const api_key = api_keys.nasa;
+            fetch("https://api.nasa.gov/planetary/apod?api_key="+api_key).then(
+                response => response.json()
+            ).then(data => {
+                document.getElementById("title").textContent = data.title;
+                document.getElementById("apod-image").src = data.url;
+                document.getElementById("description").textContent = data.explanation;
+            });
+        })
     </script>
 </body>
 </html>
