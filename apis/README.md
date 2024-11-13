@@ -33,7 +33,7 @@ Take a close look at [this](https://api.sejm.gov.pl/sejm/openapi/ui/#/) website 
 
 Load `https://api.sejm.gov.pl/sejm/openapi/` into the [Swagger online editor](https://editor.swagger.io/) and try generating a Python client for it.
 
-### Ranking words by frequency in artist's lyrics - Python and credentials
+### Ranking words by frequency in artist's track titles - Python and credentials
 
 Look into the `genius.py` file for a boilerplate.
 [Some info on getting the Genius API key](https://melaniewalsh.github.io/Intro-Cultural-Analytics/04-Data-Collection/07-Genius-API.html)
@@ -41,10 +41,9 @@ Look into the `genius.py` file for a boilerplate.
 1. Retrieve the search results for an artist.
 2. Extract the artist ID from the search results
 3. Retrieve the artist's songs
-4. Extract the song lyrics from the artist's songs
-5. Print some of the song lyrics to test out the app.
-6. Normalize the texts by removing punctuation and converting to lowercase.
-7. Count a word's frequency in the song lyrics.
+4. Extract the song titles from the artist's songs
+5. Normalize the texts by removing punctuation and converting to lowercase.
+6. Count a word's frequency in the song lyrics.
 
 ### Asteroid Announcer - Apps Script, Advanced API usage and OAuth
 
