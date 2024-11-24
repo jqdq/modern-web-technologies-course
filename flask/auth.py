@@ -65,6 +65,7 @@ def register():
             if any(i['username'] == username for i in users):
                 error = "User is already registered."
             else:
+                users.append({"id": len(users), "username": username, "password": generate_password_hash(password)})
                 # Success, go to the login page.
                 return redirect(url_for("auth.login"))
 
@@ -80,7 +81,7 @@ def login():
         username = request.form["username"]
         password = request.form["password"]
         error = None
-        user = next(i for i in users if i['username'] == username)
+        user = next((i for i in users if i['username'] == username), None)
 
         if user is None:
             error = "Incorrect username."
@@ -91,7 +92,7 @@ def login():
             # store the user id in a new session and return to the index
             session.clear()
             session["user_id"] = user["id"]
-            return redirect(url_for("index"))
+            return redirect(url_for("home"))
 
         flash(error)
 
@@ -102,4 +103,4 @@ def login():
 def logout():
     """Clear the current session, including the stored user id."""
     session.clear()
-    return redirect(url_for("index"))
+    return redirect(url_for("home"))

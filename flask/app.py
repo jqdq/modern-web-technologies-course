@@ -1,5 +1,7 @@
-from flask import Flask, render_template
-from movie_ratings import _ratings
+from flask import Flask, render_template, abort, request, flash
+from flask_wtf import CSRFProtect
+from auth import bp, login_required
+from movie_ratings import ratings
 
 app = Flask(__name__)
 
