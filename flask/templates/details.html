@@ -1,8 +1,16 @@
+{% extends "base.html" %}
 
-<h1>Movie 1</h1>
+{% block title %}{{ movie["title"] }}{% endblock %}
+
+{% block header %}
+<h1>{{ movie["title"] }}</h1>
+{% endblock %}
+    
+{% block content %}
 <ul>
-    <li>Cat Death: Yes</li>
-    <li>Violence: No</li>
-    <li>Loud Noises: No</li>
-    <li>Jump Scares: No</li>
+    <li>Cat Death: {{ "Yes" if movie["cat_death"] else "No" }}</li>
+    <li>Violence: {{ "Yes" if movie["violence"] else "No" }}</li>
+    <li>Loud Noises: {{ "Yes" if movie["loud_noises"] else "No" }}</li>
+    <li>Jump Scares: {{ "Yes" if movie["jump_scares"] else "No" }}</li>
 </ul>
+{% endblock %}

@@ -1,4 +1,15 @@
-<h1>Add Movie</h1>
+{% extends "base.html" %}
+
+{% block title %}Add new movie{% endblock %}
+
+{% block header %}
+<h1>Add new movie</h1>
+{% endblock %}
+    
+{% block content %}
+{% if error %}
+    <article>{{ error }}</article>
+{% endif %}
 <form action="" method="post">
     <label for="title">Title:</label>
     <input type="text" id="title" name="title" required><br><br>
@@ -17,3 +28,4 @@
 
     <input type="submit" value="Add Movie">
 </form>
+{% endblock %}

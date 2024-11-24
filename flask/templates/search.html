@@ -1,1 +1,13 @@
-<article><a href="">Movie 1</a></article>
+{% extends "base.html" %}
+
+{% block title %}Results for {{query}}{% endblock %}
+
+{% block header %}
+<h1>Search results for {{query}}</h1>
+{% endblock %}
+    
+{% block content %}
+{% for movie in movies %}
+    <article><a href="{{ url_for('movie_site', title=movie) }}">{{ movie }}</a></article>
+{% endfor %}
+{% endblock %}
