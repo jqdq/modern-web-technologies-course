@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Check triggers in movies{% endblock %}
+
+{% block header %}
+<h1>Does the cat die?</h1>
+{% endblock %}
+    
+{% block content %}
+        <section id="search">
+            <h2>Search for a Movie, TV Show or a Game</h2>
+            <form action="{{url_for('search')}}" method="GET">
+                <input type="text" name="query" placeholder="Enter title..." required>
+                <button type="submit">Search</button>
+            </form>
+        </section>
+{% endblock %}

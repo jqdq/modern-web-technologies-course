@@ -7,17 +7,33 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   </head>
   <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link" href="#">Features</a>
+            <a class="nav-link" href="#">Pricing</a>
+            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+          </div>
+        </div>
+      </div>
+    </nav>
     <main class="container">
         <article>
             <h1 id="normalization-section">Understanding CSS Normalization</h1>
-            <p>CSS normalization is a process of making sure that all browsers render all elements more consistently and in line with modern standards. It aims to reduce browser inconsistencies by providing a common foundation for styling.</p>
+            <p><b>CSS normalization</b> is a process of making sure that all browsers render all elements more consistently and in line with modern standards. It aims to reduce browser inconsistencies by providing a common foundation for styling.</p>
             
             <h2>Why Normalize CSS?</h2>
-            <p>Different browsers have different default styles for HTML elements. These differences can lead to inconsistencies in the appearance of a website across various browsers. By using a CSS normalization file, you can ensure that your website looks more uniform across different browsers.</p>
+            <p>Different browsers <i>have</i> different default styles for HTML elements. These differences can lead to inconsistencies in the appearance of a website across various browsers. By using a CSS normalization file, you can ensure that your website looks more uniform across different browsers.</p>
             
             <h2>How to Normalize CSS</h2>
-            <p>Bootstrap has a normalization library built-in. When needed, you can use Normalize.css. To do so, include the following code:</p>
-            &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"&gt;
+            <blockquote class="blockquote"><p>Bootstrap has a normalization library built-in. When needed, you can use Normalize.css. To do so, include the following code:</p></blockquote>
+            <pre><code>&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"&gt;</code></pre>
             <p>This will apply the normalization styles to your website, ensuring a more consistent appearance across different browsers.</p>
         </article>
         <article>

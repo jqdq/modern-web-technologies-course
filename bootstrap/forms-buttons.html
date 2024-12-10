@@ -24,63 +24,63 @@
             <li>Look into: carousels, jumbotrons, spinners, progress bars, cards, button tooltips, and toasts (tooltips and toasts get you extra credit!). Create a page that uses a container/grid and two of these.</li>
         </ul>
         
-        <div class="[5] _" role="alert">
+        <div class="alert alert-success" role="alert">
             A simple success alert—check it out!
         </div>
-        <div class="[5] _" role="alert">
+        <div class="alert alert-danger" role="alert">
             A simple danger alert—check it out!
         </div>
-        <div class="[5] _" role="alert">
+        <div class="alert alert-warning" role="alert">
             A simple warning alert—check it out!
         </div>
         <!-- I want this to be a dismissable alert -->
-        <div class="[5] _ alert-dismissible" role="alert">
+        <div class="alert alert-info alert-dismissible" role="alert">
             A simple info alert—check it out!
-            <button type="button" class="btn-close" data-bs-_="alert" aria-label="Close"></button>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
 
         <form class="row g-3">
             <div class="col-md-4">
-                <label for="validationDefault01" class="[2]">First name</label>
-                <input type="text" class="[1]" id="validationDefault01" required>
+                <label for="validationDefault01" class="form-label">First name</label>
+                <input type="text" class="form-control" id="validationDefault01" required>
             </div>
             <div class="col-md-4">
-                <label for="validationDefault02" class="[2]">Last name</label>
-                <input type="text" class="[1]" id="validationDefault02" required>
+                <label for="validationDefault02" class="form-label">Last name</label>
+                <input type="text" class="form-control" id="validationDefault02" required>
             </div>
             <div class="col-md-4">
-                <label for="validationDefaultUsername" class="[2]">Username</label>
-                <div class="[3]">
+                <label for="validationDefaultUsername" class="form-label">Username</label>
+                <div class="input-group">
                     <!-- I want this to be prefixed before the username field -->
-                    <span class="[4]">@</span>
-                    <input type="text" class="[1]" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2"
+                    <span class="input-group-text">@</span>
+                    <input type="text" class="form-control" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2"
                         required>
                 </div>
             </div>
             <div class="col-md-6">
-                <label for="validationDefault03" class="[2]">City</label>
-                <input type="text" class="[1]" id="validationDefault03" required>
+                <label for="validationDefault03" class="form-label">City</label>
+                <input type="text" class="form-control" id="validationDefault03" required>
             </div>
             <div class="col-md-3">
-                <label for="validationDefault04" class="[2]">State</label>
-                <select class="_" id="validationDefault04" required>
+                <label for="validationDefault04" class="form-label">State</label>
+                <select class="form-select" id="validationDefault04" required>
                     <option selected disabled value="">Choose...</option>
                     <option>...</option>
                 </select>
             </div>
             <div class="col-md-3">
-                <label for="validationDefault05" class="[2]">Zip</label>
-                <div class="[3]">
-                    <input type="number" maxlength="2" class="[1]" id="validationDefault05" required>
+                <label for="validationDefault05" class="form-label">Zip</label>
+                <div class="input-group">
+                    <input type="number" maxlength="2" class="form-control" id="validationDefault05" required>
                     <!-- I want this to be in between the fields -->
-                    <span class="[4]">-</span>
-                    <input type="number" maxlength="2" class="[1]" id="validationDefault06" required>
+                    <span class="input-group-text">-</span>
+                    <input type="number" maxlength="2" class="form-control" id="validationDefault06" required>
                 </div>
             </div>
             <div class="col-12">
-                <div class="_">
-                    <input class="_" type="checkbox" value="" id="invalidCheck2" required>
-                    <label class="_" for="invalidCheck2">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
+                    <label class="from-check-label" for="invalidCheck2">
                         Agree to terms and conditions
                     </label>
                 </div>
