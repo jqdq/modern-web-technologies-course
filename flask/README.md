@@ -9,6 +9,8 @@ Remember to install Flask using `pip install flask flask-wtf`
 
 ## Tasks for today
 
+The blueprint is set up **not** to use a database, instead relying on lists. However, I strongly encourage you to try and migrate the project into SQLite. You'll find the appropriate solution on the solutions branch in the `flask-with-db` folder.
+
 1. Start the development server using `flask run`.
 2. Using [routing](https://flask.palletsprojects.com/en/stable/quickstart/#routing) and the provided `movie_ratings.py` display details info for the movies.
 3. Using [site rendering](https://flask.palletsprojects.com/en/stable/quickstart/#rendering-templates), display the provided template.
