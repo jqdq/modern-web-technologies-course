@@ -8,6 +8,7 @@ Remember to install Flask using `pip install Flask-SQLAlchemy`
 - [Jinja](https://jinja.palletsprojects.com/en/stable/templates/)
 - [SQLAlchemy](https://docs.sqlalchemy.org/en/20/tutorial/index.html)
 - [Flask SQLAlchemy plugin](https://flask-sqlalchemy.readthedocs.io/en/stable/quickstart/)
+- [GeeksForGeeks tutorial](https://www.geeksforgeeks.org/python/sqlalchemy-tutorial-in-python/)
 
 ## Tasks for today
 
