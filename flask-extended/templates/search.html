@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% for movie in results %}
+<article>
+    <a href="{{ url_for('details_page', movie_title=movie['title']) }}">{{ movie['title'] }}</a>
+</article>
+{% endfor %}
+{% endblock %}
