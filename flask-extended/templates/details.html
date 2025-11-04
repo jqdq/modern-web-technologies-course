@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}{{ movie.title}} - Does the Cat Die?{% endblock %}
+
+{% block content %}
+<h1>{{ movie.title }}</h1>
+<ul>
+    <li>
+        Cat Death:
+        {% if movie.cat_death %}
+            Yes
+        {% else %}
+            No
+        {% endif %}
+    </li>
+    <li>
+        Violence:
+        {% if movie.violence %}
+            Yes
+        {% else %}
+            No
+        {% endif %}
+    </li>
+    <li>
+        Loud Noises:
+        {% if movie.loud_noises %}
+            Yes
+        {% else %}
+            No
+        {% endif %}    
+    </li>
+    <li>
+        Jump Scares:
+        {% if movie.jump_scares %}
+            Yes
+        {% else %}
+            No
+        {% endif %}    
+    </li>
+</ul>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>{{ director.name }}</h1>
+    <p>Birth Year: {{ director.birth_year }}</p>
+
+    <h2>Movies Directed</h2>
+    <ul>
+        {% for movie in movies %}
+            <li><a href="{{ url_for('details_page', movie_title=movie['title']) }}">{{ movie['title'] }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
