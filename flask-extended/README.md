@@ -38,7 +38,7 @@ Remember to install Flask using `pip install Flask-SQLAlchemy`
 7. Implement the movie page using `db.get_or_404(...)`. More [here](https://flask-sqlalchemy.readthedocs.io/en/stable/quickstart/#query-the-data)!
 8. Implement the search using `db.session.execute(db.select(...))`. Order them alphabetically. More [here](https://docs.sqlalchemy.org/en/20/tutorial/data_select.html)!
 9.  Insert data from `movie_ratings.py` on initialization.
-10. Add tags to movies, implement them using a one-to-many relationship. More [here](https://docs.sqlalchemy.org/en/14/orm/basic_relationships.html#many-to-many)!
+10. Add tags to movies using Many-to-One joins.
 
 Also check this out:
 https://flask-sqlalchemy.readthedocs.io/en/stable/pagination/
@@ -75,6 +75,7 @@ https://flask-sqlalchemy.readthedocs.io/en/stable/pagination/
    2. In `app.py`, import `CSRFProtect`
    3. Initialize it with the app object: `csrf = CSRFProtect(app)`.
    4. Add `<input type="hidden" name="csrf_token" value = "{{ csrf_token() }}"/> ` into the website forms.
+9. Add user groups as Many-to-many relationships. Implement them using a one-to-many relationship. More [here](https://docs.sqlalchemy.org/en/14/orm/basic_relationships.html#many-to-many)!
 
 Remember to discuss:
 - SQL Injection
