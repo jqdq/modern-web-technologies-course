@@ -4,7 +4,7 @@
 
 {% for movie in results %}
 <article>
-    <a href="{{ url_for('details_page', movie_title=movie['title']) }}">{{ movie['title'] }}</a>
+    <a href="{{ url_for('details_page', movie_id=movie['id']) }}">{{ movie['name'] }}</a>
 </article>
 {% endfor %}
 {% endblock %}
