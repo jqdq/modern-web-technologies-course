@@ -37,9 +37,8 @@ Remember to install Flask using `pip install Flask-SQLAlchemy`
 6. Using [these](https://flask-sqlalchemy.readthedocs.io/en/stable/queries/#insert-update-delete) rebuild the Add movie functionality.
 7. Implement the movie page using `db.get_or_404(...)`. More [here](https://flask-sqlalchemy.readthedocs.io/en/stable/quickstart/#query-the-data)!
 8. Implement the search using `db.session.execute(db.select(...))`. Order them alphabetically. More [here](https://docs.sqlalchemy.org/en/20/tutorial/data_select.html)!
-9. Add a `Director` model and create a one-to-many relationship. Use it to implement the director page and director list. Order them by movie counts (use `join`/`outer_join`, `group_by`, and `func`).
-10. Insert data from `movie_ratings.py` on initialization.
-11. Add tags to movies, implement them using a many-to-many relationship. More [here](https://docs.sqlalchemy.org/en/14/orm/basic_relationships.html#many-to-many)! Remember to use `db.Table` instead.
+9.  Insert data from `movie_ratings.py` on initialization.
+10. Add tags to movies, implement them using a one-to-many relationship. More [here](https://docs.sqlalchemy.org/en/14/orm/basic_relationships.html#many-to-many)!
 
 Also check this out:
 https://flask-sqlalchemy.readthedocs.io/en/stable/pagination/

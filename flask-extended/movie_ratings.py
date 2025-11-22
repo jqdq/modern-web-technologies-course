@@ -41,19 +41,4 @@ _ratings = [
     },
 ]
 
-directors = {
-    1: {
-        "name": "Andrew Adamson",
-        "birth_year": 1966,
-    },
-    2: {
-        "name": "John Doe",
-        "birth_year": 1970,
-    },
-    3: {
-        "name": "Jane Smith",
-        "birth_year": 1980,
-    },
-}
-
 ratings = {rating["title"]: rating for rating in _ratings}
