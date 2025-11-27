@@ -37,4 +37,25 @@
         {% endif %}    
     </li>
 </ul>
+<!--
+    You can use some methods inside Jinja:
+    https://jinja.palletsprojects.com/en/stable/templates/#list-of-builtin-filters
+-->
+{% if movie.tags|length > 0 %}
+<h2>Tags:</h2>
+{% endif %}
+<!-- Note we can iter over movie.tags and movie.awards because of the relationship defined in the Movie model -->
+<ul>
+    {% for tag in movie.tags %}
+        <li><a href="{{url_for('movie_tag', tag_id=tag.id)}}">{{ tag.tag_name }}</a></li>
+    {% endfor %}
+</ul>
+{% if movie.awards|length > 0 %} 
+<h2>Awards:</h2>
+{% endif %}
+<ul>
+    {% for award in movie.awards %}
+        <li>{{ award.award_name }}</li>
+    {% endfor %}
+</ul>
 {% endblock %}

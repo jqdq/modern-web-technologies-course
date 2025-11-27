@@ -4,10 +4,19 @@ In them we specify the attributes (columns) of these objects and their types.
 Mapped[...] is a notation that tells SQLAlchemy what type the attribute is.
 
 You should use models like this to represent all the data stored in the app.
+
+You can use One to One relationships to store data like:
+- User profiles (e.g. each user has one profile)
+- Extended details (e.g. product has one detailed specification sheet)
+Not very common. I'm not showing any examples here, but you just need to create
+a foreign key on one side and a relationship on both sides. More info:
+https://docs.sqlalchemy.org/en/14/orm/basic_relationships.html#one-to-one
+
+Others are described in their respective files.
 """
 
 from models.init_db import db
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 
 class Movie(db.Model):
@@ -20,3 +29,16 @@ class Movie(db.Model):
     violence: Mapped[bool]
     loud_noises: Mapped[bool]
     jump_scares: Mapped[bool]
+
+    # Many-to-one relationship
+    # relationship to Award model
+    # Note the back_populates points to 'movie' in Award to complete the relationship.
+    awards: Mapped[list["Award"]] = relationship("Award", back_populates="movie")
+
+    # Many-to-many relationship
+    # - secondary points to the association table
+    # - back_populates points to 'movies' in Tag
+    # - Note the quotes around "Tag" to avoid circular import issues
+    tags: Mapped[list["Tag"]] = relationship(
+        secondary="movie_tag", back_populates="movies"
+    )

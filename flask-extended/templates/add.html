@@ -21,6 +21,9 @@
     <label for="tag">Tags:</label>
     <input type="text" id="tag" name="tag"><br><br>
 
+    <label for="award">Awards:</label>
+    <input type="text" id="award" name="award"><br><br>
+
     <label for="cat_death">Cat Death:</label>
     <input type="checkbox" id="cat_death" name="cat_death"><br><br>
 
@@ -33,12 +36,6 @@
     <label for="jump_scares">Jump Scares:</label>
     <input type="checkbox" id="jump_scares" name="jump_scares"><br><br>
 
-    <label for="director">Director:</label>
-    <select id="director" name="director" required>
-        {% for director_id, director in directors.items() %}
-            <option value="{{ director_id }}">{{ director.name }}</option>
-        {% endfor %}
-    </select>
     <input type="submit" value="Add Movie">
 </form>
 {% endblock %}
