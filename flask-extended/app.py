@@ -1,4 +1,4 @@
-from flask import Flask, render_template, abort, request, flash
+from flask import Flask, render_template, abort, request, flash, g
 import sys
 
 # movie_ratings is just a mockup for a database.
@@ -10,6 +10,9 @@ from models.init_db import db
 from models.movie import Movie
 from models.tag import Tag
 from models.award import Award
+from models.user import User
+from auth import auth, login_required
+from flask_wtf import CSRFProtect
 
 app = Flask(__name__)
 # Secret key is needed for flash messages and sessions to work.
@@ -19,7 +22,10 @@ app.secret_key = b"fgfxnfykxjxtjr"
 # Look for a file named 'db.db' in the 'instance' folder. That's the DB!
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.db"
 # Initializing the database with the Flask app.
+app.register_blueprint(auth)
 db.init_app(app)
+
+csrf = CSRFProtect(app)
 
 
 @app.get("/")
@@ -35,11 +41,13 @@ def details_page(movie_id):
 
 
 @app.get("/add")
+@login_required
 def add_movie():
     return render_template("add.html")
 
 
 @app.post("/add")
+@login_required
 def add_movie_form():
     # Check if a movie with the given title already exists in the database.
     movie_name = request.form["title"]
@@ -56,6 +64,8 @@ def add_movie_form():
     loud_noises = "loud_noises" in request.form
     jump_scares = "jump_scares" in request.form
 
+    user_id = g.user.id
+
     # Creating and adding the Movie object to the database.
     movie_object = Movie(
         name=movie_name,
@@ -63,6 +73,7 @@ def add_movie_form():
         violence=violence,
         loud_noises=loud_noises,
         jump_scares=jump_scares,
+        created_by_id=user_id,
     )
     db.session.add(movie_object)
     # Committing the changes to the database, so the movie gets an ID.

@@ -36,6 +36,7 @@
     <label for="jump_scares">Jump Scares:</label>
     <input type="checkbox" id="jump_scares" name="jump_scares"><br><br>
 
+    <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}"/>
     <input type="submit" value="Add Movie">
 </form>
 {% endblock %}

@@ -42,3 +42,6 @@ class Movie(db.Model):
     tags: Mapped[list["Tag"]] = relationship(
         secondary="movie_tag", back_populates="movies"
     )
+
+    created_by_id: Mapped[int] = mapped_column(db.ForeignKey("user.id"), nullable=True)
+    created_by: Mapped["User"] = relationship("User", back_populates="movies")
