@@ -10,8 +10,12 @@ from models.init_db import db
 from models.movie import Movie
 from models.tag import Tag
 from models.award import Award
+
+# We have to import User to create the user table in the database using db.create_all()
 from models.user import User
 from auth import auth, login_required
+
+# We need flask-wtf for CSRF protection
 from flask_wtf import CSRFProtect
 
 app = Flask(__name__)
@@ -25,6 +29,7 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.db"
 app.register_blueprint(auth)
 db.init_app(app)
 
+# Setting up CSRF protection, aside from this, we only add the CSRF field in our form.
 csrf = CSRFProtect(app)
 
 
@@ -40,6 +45,7 @@ def details_page(movie_id):
     return render_template("details.html", movie=movie)
 
 
+# See auth.py for more details about login_required
 @app.get("/add")
 @login_required
 def add_movie():
@@ -64,6 +70,8 @@ def add_movie_form():
     loud_noises = "loud_noises" in request.form
     jump_scares = "jump_scares" in request.form
 
+    # Getting the ID of the currently logged-in user.
+    # g.user is set in auth.py after login.
     user_id = g.user.id
 
     # Creating and adding the Movie object to the database.

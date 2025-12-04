@@ -11,6 +11,7 @@
 		<article>{{ message }}</article>
 	{% endfor %}
 	<form method="post">
+		<!-- CSRF token for protection, adding this together with CSRFProtect in app.py is enough -->
 		<input type="hidden" name="csrf_token" value = "{{ csrf_token() }}"/>
 		<label for="username">Username</label>
 		<input name="username" required>

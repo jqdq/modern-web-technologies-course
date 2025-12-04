@@ -14,10 +14,13 @@
                 <li><a href="{{url_for('home')}}">Does the Cat Die?</a></li>
             </ul>
             <ul>
+                <!-- g.user is set in auth.py after login -->
                 {% if g.user %}
+                <!-- If user is logged in, show these links -->
                 <li><a href="{{url_for('add_movie')}}">Add movie</a></li>
                 <li><a href="{{url_for('auth.logout')}}">Logout</a></li>
                 {% else %}
+                <!-- If user is not logged in, show these links -->
                 <li><a href="{{url_for('auth.login_page')}}">Login</a></li>
                 <li><a href="{{url_for('auth.register_page')}}">Register</a></li>
                 {% endif %}

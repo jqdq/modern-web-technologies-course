@@ -3,6 +3,7 @@
 
 {% block content %}
 <h1>{{ movie.name }}</h1>
+<!-- Creator is only shown if set and user is logged in, g.user is set in auth.py after login -->
 {% if movie.created_by.username and g.user %}
 <p>Record added by: {{ movie.created_by.username }}</p>
 {% endif %}

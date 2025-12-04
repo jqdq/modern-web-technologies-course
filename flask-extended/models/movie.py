@@ -43,5 +43,6 @@ class Movie(db.Model):
         secondary="movie_tag", back_populates="movies"
     )
 
+    # Many-to-one relationship to User (creator of the movie entry)
     created_by_id: Mapped[int] = mapped_column(db.ForeignKey("user.id"), nullable=True)
     created_by: Mapped["User"] = relationship("User", back_populates="movies")
