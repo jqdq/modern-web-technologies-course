@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santa's naughty list</title>
+    <link rel="stylesheet" href="https://classless.de/classless-tiny.css">
+    <!-- This is used to import Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        .input-mistake {
+            border: 2px solid red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Santa's Naughty List</h1>
+    <!-- x-data is used to define Alpine.js component state and get methods-->
+    <div x-data="{
+            counter: 0,
+            name: 'User',
+            get messageUser() {
+                return ' Welcome, ' + this.name + '!';
+            }
+        }">
+        <!-- x-text is used to bind text content to Alpine.js component state -->
+        <h2 x-text="messageUser"></h2>
+        <fieldset>
+            <legend>Inputs (clicked: <span x-text="counter"></span> times)</legend>
+            <!-- x-model is used to bind input value to Alpine.js component state -->
+            <input type="text" x-model="name" />
+            <!-- x-on:click or @click is used to bind click event to Alpine.js component method -->
+            <button @click="counter++">Click Me</button>
+        </fieldset>
+    </div>
+    <main>
+        <h2>Useful links</h2>
+        <ul>
+            <li><a href="https://alpinejs.dev/">Alpine.js Documentation</a></li>
+            <li><a href="https://alpinejs.dev/plugins/intersect">A plugin to do stuff when user sees an element</a></li>
+            <li><a href="https://github.com/thewebforge/alpinejs-timeout">A timeout plugin to schedule a task.</a></li>
+        </ul>
+        <h2>Tasks for today</h2>
+        <ol>
+            <li>Look into what we already have here</li>
+            <li>Create a list of children</li>
+            <li>Create a form that will allow adding children to the list</li>
+            <ol>
+                <li>The form should expand only when clicked, use <code>x-if</code>!</li>
+                <li>
+                    Using <code>x-bind:...</code> or <code>:...</code> assign a red border to any input that is empty
+                    when the form is submitted.
+                </li>
+                <li>
+                    The form should have fields for:
+                    <ul>
+                        <li>Name (text)</li>
+                        <li>Age (number)</li>
+                        <li>
+                            Bad deeds - these should be a list that can be extended.
+                            Use <code>x-model</code> and <code>x-for</code> to achieve this.
+                        </li>
+                    </ul>
+                </li>
+            </ol>
+            <li>Display all of the children and their sins.</li>
+            <li>Add a button to remove a child from the list.</li>
+            <li>Add a deed counter.</li>
+            <li>
+                Add a "Scroll to form" button that uses <code>x-ref</code> to scroll to the page header.
+            </li>
+            <li>Add a "Last updated" field on the top of the site. Update it using the <a href="https://alpinejs.dev/magics/store">Global Store</a></li>
+            <li>
+                Add a search using the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/datalist">
+                datalist</a> element. Let's do a similar search in our Flask project.
+            </li>
+            <li>
+                Load and save the state using <a href="https://alpinejs.dev/plugins/persist">Alpine Persist plugin</a>.
+            </li>
+        </ol>
+        <h2>Homework</h2>
+        <ol>
+            <li><b>Deadline: 9.01.2026</b></li>
+            <li>Add good deeds.</li>
+            <li>Calculate the balance of the deeds.</li>
+            <li>Color code the deeds.</li>
+        </ol>
+        <p>
+            <b>Await a tutorial on how to deploy your pages.</b>
+            This will be required for the next class on 13.01.2026, as we will be setting up Cookie Consent and GTM.
+            You will be able to redeploy them as you make changes.
+        </p>
+    </main>
+</body>
+</html>
