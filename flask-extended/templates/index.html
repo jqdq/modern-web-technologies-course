@@ -7,7 +7,54 @@
     <section id="search">
         <h2>Search for a Movie, TV Show or a Game</h2>
         <form action="/search" method="GET">
-            <input type="text" name="query" placeholder="Enter title..." required>
+            <!-- 
+                Using Alpine.js for reactive search suggestions
+                x-data initializes a reactive component
+                Remember to include Alpine.js in base.html head section!
+            -->
+            <div x-data="{query:'', suggestions: []}">
+                <script>
+                    // Awaits require the function to be async
+                    // See more here: https://javascript.info/async-await
+                    async function getSuggestions(data) {
+                        // The data argument is the x-data object
+                        if (data.query.length === 0){
+                            data.suggestions = []
+                            return
+                        }
+                        // We use fetch to access our search_suggest route
+                        // Using fetch, you can also send POST requests (`fetch(url, {method: 'POST', body: ...})`)
+                        // See more here: https://javascript.info/fetch
+                        const results = await fetch(
+                            `/search_suggest?query=${data.query}`
+                        )
+                        // If the request was successful, we extract the JSON data
+                        if (results.ok) {
+                            const results_json = await results.json()
+                            // And set the suggestions array to the received suggestions
+                            data.suggestions = results_json.suggestions
+                        }
+                    }
+                </script>
+                <input 
+                    name="query" placeholder="Enter title..." 
+                    required x-model='query'
+                    @keyup="getSuggestions($data)"
+                    list="suggestions-list"
+                >
+                <!--
+                    ^ @keyup triggers the getSuggestions function when the user releases a key
+                    ^ x-model binds the input value to the query variable in x-data
+                    ^ list links the input to the datalist below, this shows the suggestions as a dropdown
+                -->
+                <datalist id="suggestions-list">
+                    <!-- x-for iterates over the suggestions array and creates a button for each suggestion -->
+                    <template x-for="suggestion in suggestions">
+                        <!-- :value binds the value attribute to the suggestion -->
+                        <option :value="suggestion"></option>
+                    </template>
+                </datalist>
+            </div>
             <input type="text" name="include_tags" placeholder="Include tags...">
             <input type="text" name="exclude_tags" placeholder="Exclude tags...">
             <button type="submit">Search</button>

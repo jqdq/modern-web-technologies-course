@@ -168,6 +168,22 @@ def search_movies():
     results = db.session.execute(query_stmt).scalars()
     return render_template("search.html", results=results)
 
+# Here we define an API route that returns search suggestions in JSON format.
+# If needed, you can also parse JSON sent in the request body using request.json:
+# body_dict = request.json (no parentheses, it's a property, not a method)
+@app.get('/search_suggest')
+def search_suggest():
+    # Retrieving the search query from the URL parameters.
+    query = request.args.get("query", "").lower()
+    # Retrieving matching movies from the database.
+    results = db.session.execute(
+        db.select(Movie).where(Movie.name.contains(query))
+    ).scalars()
+    # Flask can automatically convert dictionaries to JSON responses.
+    # These can be easily consumed by fetch()->json() in JavaScript.
+    return {
+        'suggestions': [i.name for i in results]
+    }
 
 @app.get("/tag/<int:tag_id>")
 def movie_tag(tag_id):

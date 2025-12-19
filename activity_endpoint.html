@@ -1,0 +1,52 @@
+<!--
+    This is the activity form you need to hide on your site. Style it however you want.
+    Remember to set the endpoint and your site name.
+    This is also a great Fetch API POST request example using Alpine.js.
+-->
+<div>
+    <!-- You can remove alpine if you already import it -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <div x-data="{ name: ''}">
+        <script>
+            const endpoint = 'TheURLFromYourMail'
+            const site = 'YourSiteNameHere'
+            async function submitForm(data) {
+                var response = await fetch(endpoint, { 
+                    method: 'POST',
+                    // `mode: 'no-cors'` is needed to access endpoints on other domains.
+                    // You can also set up CORS on your server to avoid this.
+                    // See more here: https://flask-cors.readthedocs.io/en/latest/#resource-specific-cors
+                    // You'll need to pip install flask-cors and import CORS from flask_cors
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name: data.name, site: site })
+                })
+                alert('All good B)')
+
+                // Google actually does some weird things, so we can't really check response status here.
+                // However, I left this here for educational purposes.
+                // Similarly to Python's requests library, Fetch has a .ok property to check the response status.
+                if (response.ok) {
+                    // Let's convert the response to JSON
+                    var data = await response.json()
+                    // And check the status value in the returned JSON
+                    if (data.status === 'success') {
+                        alert('All good B)')
+                    } else {
+                        alert('Something different went wrong :(')
+                    }
+                }
+            }
+
+            // Initial test to see if the endpoint is reachable
+            // I was too lazy to set this up with Alpine.js properly lmao
+            fetch(endpoint).catch(error => {
+                document.getElementById('activity-form').outerHTML = '<p>Activity tracking is currently unavailable.</p>'
+            });
+        </script>
+        <form @submit.prevent="submitForm($data)" id="activity-form">
+            <input type="text" x-model="name" placeholder="Enter your name" required>
+            <button>Submit</button>
+        </form>
+    </div>
+</div>

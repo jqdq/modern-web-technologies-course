@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santa's naughty list</title>
+    <link rel="stylesheet" href="https://classless.de/classless-tiny.css">
+    <!-- This is used to import Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        .input-mistake {
+            border: 2px solid red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Santa's Naughty List</h1>
+    <!--
+      x-data is used to define Alpine.js component properties
+      See here: https://alpinejs.dev/directives/data
+    -->
+    <div x-data="{
+      children: [
+        {
+          name: 'Stefan',
+          age: 12,
+          bad_deeds: [
+            'Używał brzydkich słów',
+            'Nie szanował mamy i taty'
+          ]
+        },
+        {
+          name: 'Małgosia',
+          age: 8,
+          bad_deeds: [
+            'Kradła samochodów osie'
+          ]
+        }
+      ],
+      new_child_name: '',
+      new_child_age: '',
+      new_child_bad_deeds: [],
+      bad_deed_to_be_added: '',
+      deed_required: false
+    }">
+      <!-- 
+        @click is used to define what happens on click event
+        $refs is an object containing elements marked with x-ref.
+        See line: 88
+        See here: https://alpinejs.dev/directives/ref
+      -->
+      <button @click="$refs.new_child_form.scrollIntoView()">Scroll to form</button>
+      <!--
+        x-for is used to loop over an array and render elements for each item.
+        Note we're accessing children defined in x-data above.
+        Also note (child, index) to get both the item and its index in the array.
+        See here: https://alpinejs.dev/directives/for
+      -->
+      <template x-for="(child, index) in children">
+        <article>
+          <!--
+            x-text is used to set text content of the tag
+            See here: https://alpinejs.dev/directives/text
+          -->
+          <h3 x-text="child.name"></h3>
+          <!-- You can use x-text to set parts of the text content using spans -->
+          <p>Lat: <span x-text="child.age"></span></p>
+          <h4>Złe czyny</h4>
+          <ol>
+            <template x-for="deed in child.bad_deeds">
+              <li x-text="deed"></li>
+            </template>
+          </ol>
+          <button @click="children.pop(index)">Usuń</button>
+          <p>Łącznie: <span x-text="children.length"></span></p>
+        </article>
+      </template>
+      <script>
+        // Here we define functions that can be used on the x-data object when an event occurs
+        // Note we're accessing the x-data properties using the data argument.
+        // This works both with getting and modifying the properties.
+        function addChild(data) {
+          // Adding a new child to the children array
+          data.children.push({
+            name: data.new_child_name,
+            age: data.new_child_age,
+            bad_deeds: data.new_child_bad_deeds
+          })
+          // Resetting the form fields - this will also clear the form inputs due to x-model bindings
+          // See here: https://alpinejs.dev/directives/model
+          data.new_child_name = ''
+          data.new_child_age = ''
+          data.new_child_bad_deeds = []
+        }
+
+        function addDeedToEditedChild(data) {
+          // Validating the bad deed input
+          if (data.bad_deed_to_be_added === ''){
+            // When empty, the input border will turn red and an error message will be shown.
+            // We achieve this using the deed_required property defined in x-data
+            // bound to the input with :class, and the template below it with x-if.
+            data.deed_required = true
+            return
+          }
+          // Adding the bad deed to the new child's bad deeds list
+          data.new_child_bad_deeds.push(
+            data.bad_deed_to_be_added
+          )
+          // Resetting the bad deed input and validation flag
+          data.bad_deed_to_be_added = ''
+          // Resetting the validation flag
+          data.deed_required = false
+        }
+      </script>
+      <h3>Add a child</h3>
+      <!--
+        @submit.prevent is used to prevent the default form submission and call the addChild function instead.
+        x-ref is used to reference this form in other parts of the component (see the "Scroll to form" button above).
+        This gives access to the form element (its JavaScript API) via $refs.new_child_form
+      -->
+      <form @submit.prevent="addChild($data)" x-ref="new_child_form">
+        <!-- x-model is used to bind the input value to the new_child_name property in the component's data -->
+        <label for="new_child_name_field">Name</label>
+        <input id="new_child_name_field" type="text" x-model='new_child_name' required/>
+        <label for="new_child_age_field">Age</label>
+        <input id="new_child_age_field" type="number" x-model="new_child_age" required/>
+
+        <h4>Bad deeds</h4>
+        <!-- Here is the edited bad deeds list -->
+        <ol>
+          <template x-for="deed in new_child_bad_deeds">
+            <li x-text="deed"></li>
+          </template>
+        </ol>
+        <!-- 
+          Input for adding a new bad deed. Note the x-model binding to bad_deed_to_be_added.
+          :class is used to conditionally apply the input-mistake class when deed_required is true.
+          See here: https://alpinejs.dev/directives/bind#class-object-syntax
+        -->
+        <input type="text" x-model="bad_deed_to_be_added" :class="{'input-mistake': deed_required}">
+        <!-- x-if can be used to conditionally render elements, just like if in Jinja2 -->
+        <template x-if="deed_required">
+          <small>The added deed cannot be empty.</small>
+        </template>
+        <!-- There is no else in Alpine.js, so we use another template with the opposite condition -->
+        <template x-if="!deed_required">
+          <small>All good.</small>
+        </template>
+        <!-- click.prevent is used to prevent the form submission and call the addDeedToEditedChild function instead -->
+        <button @click.prevent="addDeedToEditedChild($data)">Add deed to list</button>
+        <button>Add child to list</button>
+      </form>
+    </div>
+    <main>
+        <h2>Useful links</h2>
+        <ul>
+            <li><a href="https://alpinejs.dev/">Alpine.js Documentation</a></li>
+            <li><a href="https://alpinejs.dev/plugins/intersect">A plugin to do stuff when user sees an element</a></li>
+            <li><a href="https://github.com/thewebforge/alpinejs-timeout">A timeout plugin to schedule a task.</a></li>
+        </ul>
+        <h2>Tasks for today</h2>
+        <ol>
+            <li>Look into what we already have here</li>
+            <li>Create a list of children</li>
+            <li>Create a form that will allow adding children to the list</li>
+            <ol>
+                <li>The form should expand only when clicked, use <code>x-if</code>!</li>
+                <li>
+                    Using <code>x-bind:...</code> or <code>:...</code> assign a red border to any input that is empty
+                    when the form is submitted.
+                </li>
+                <li>
+                    The form should have fields for:
+                    <ul>
+                        <li>Name (text)</li>
+                        <li>Age (number)</li>
+                        <li>
+                            Bad deeds - these should be a list that can be extended.
+                            Use <code>x-model</code> and <code>x-for</code> to achieve this.
+                        </li>
+                    </ul>
+                </li>
+            </ol>
+            <li>Display all of the children and their sins.</li>
+            <li>Add a button to remove a child from the list.</li>
+            <li>Add a deed counter.</li>
+            <li>
+                Add a "Scroll to form" button that uses <code>x-ref</code> to scroll to the page header.
+            </li>
+            <li>Add a "Last updated" field on the top of the site. Update it using the <a href="https://alpinejs.dev/magics/store">Global Store</a></li>
+            <li>
+                Add a search using the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/datalist">
+                datalist</a> element. Let's do a similar search in our Flask project.
+            </li>
+            <li>
+                Load and save the state using <a href="https://alpinejs.dev/plugins/persist">Alpine Persist plugin</a>.
+            </li>
+        </ol>
+        <h2>Homework</h2>
+        <ol>
+            <li><b>Deadline: 9.01.2026</b></li>
+            <li>Add good deeds.</li>
+            <li>Calculate the balance of the deeds.</li>
+            <li>Color code the deeds, use <code>:style</code> or <code>:class</code>.</li>
+        </ol>
+        <p>
+            <b>Await a tutorial on how to deploy your pages.</b>
+            This will be required for the next class on 13.01.2026, as we will be setting up Cookie Consent and GTM.
+            You will be able to redeploy them as you make changes.
+        </p>
+    </main>
+</body>
+</html>
