@@ -21,7 +21,7 @@ from models.movie import Movie
 
 class Award(db.Model):
     id: Mapped[int] = mapped_column(primary_key=True)
-    award_name: Mapped[int]
+    award_name: Mapped[str]
 
     # For the One-to-many-relationship
     # Key to the Movie table - establishes a One-to-Many relationship
