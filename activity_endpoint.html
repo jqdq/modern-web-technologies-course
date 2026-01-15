@@ -9,7 +9,7 @@
     <div x-data="{ name: ''}">
         <script>
             const endpoint = 'TheURLFromYourMail'
-            const site = 'YourSiteNameHere'
+            const site = window.location.href
             async function submitForm(data) {
                 var response = await fetch(endpoint, { 
                     method: 'POST',
