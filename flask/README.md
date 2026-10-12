@@ -33,6 +33,9 @@ The blueprint is set up **not** to use a database, instead relying on lists. How
       3. A `title` block (`<title>` in the `<head>`).
    4. Use the base in all the sites we're about to create.
    5. Convert all the links to `url_for([function name], [parameters])` (as described [here](https://www.geeksforgeeks.org/flask-url-helper-function-flask-url_for/))
+   6. Set up 404 error handling for pages that do not exist (as described [here](https://flask.palletsprojects.com/en/stable/quickstart/#redirects-and-errors))
+   7. Set up a custom error page for HTTP errors.
+   8. Add a redirect.
 5. Set up the static content for the site.
    1. Set up the static files directory.
    2. Migrate links to url_for.
