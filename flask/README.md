@@ -33,21 +33,22 @@ The blueprint is set up **not** to use a database, instead relying on lists. How
       3. A `title` block (`<title>` in the `<head>`).
    4. Use the base in all the sites we're about to create.
    5. Convert all the links to `url_for([function name], [parameters])` (as described [here](https://www.geeksforgeeks.org/flask-url-helper-function-flask-url_for/))
-5. Implement the search.
+5. Set up the static content for the site.
+   1. Set up the static files directory.
+   2. Migrate links to url_for.
+   3. Add some images for the movies.
+   4. Make the img tags accessible.
+6. Implement the search.
    1. Create a get request route, that retrieves the `query` parameter, as shown here:
    ```python
    query_string = request.args.get('query', '')
    ```
    2. On the site, List all the movies that contain the `query` string in them.
-6. Using `add.html`, create a site for adding new movies:
+7. Using `add.html`, create a site for adding new movies:
    1. Create a GET and POST request route for retrieving the site and sending in data (explained [here](https://flask.palletsprojects.com/en/stable/quickstart/#http-methods)).
    2. Retrieve the form data using `request.form[...]` (explained [here](https://flask.palletsprojects.com/en/stable/quickstart/#the-request-object)).
    3. Save the data to the dictionary.
    4. Verify if the search works.
-7. Set up the static content for the site.
-   1. Set up the static files directory.
-   2. Migrate links to url_for.
-   3. Add images for the movies.
 8.  Scare user by telling him what device is he using.
 
 ## Credits

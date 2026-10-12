@@ -1,0 +1,6 @@
+{% macro movie_image(src, width=300, height=None, fit="cover", position="center") %}
+{#- fit: object-fit value for cropping ("cover" crops to fill, "contain" fits
+    whole image, "fill" stretches, "none"/"scale-down" keep natural size) -#}
+<img src="{{ src }}" width="{{ width }}" {% if height %}height="{{ height }}"{% endif %} style="object-fit: {{ fit }}; object-position: {{ position }};" alt="">
+{# TODO: add alt text support later, e.g. pass alt="..." in and render it here #}
+{% endmacro %}
