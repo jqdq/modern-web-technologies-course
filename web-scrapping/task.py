@@ -1,27 +1,32 @@
-"""
-Finish the script. It should retrieve the main pages of websites below (1p) and find 10 unique internal links on each of them (1p).
-Then, it should count the number of outbound links (`a` tags marked as outside links by the function below) (1.5p) and images (`img` tags) (1.5p) on every site.
-Send me the script.
-"""
 import requests
-from bs4 import BeautifulSoup
-from urllib.parse import urlparse
+import bs4
 
-def is_outside_link(current_site, link):
-    domain = urlparse(current_site).netloc
-    link_domain = urlparse(link).netloc
-    return link_domain and link_domain != domain
+response = requests.get("http://books.toscrape.com/catalogue/i-had-a-nice-time-and-other-lies-how-to-find-love-sht-like-that_814/index.html")
+if response.ok: 
+    content = response.text
+    soup = bs4.BeautifulSoup(content, 'lxml')
+    title = soup.find('h1').text
+    price = soup.find('p', class_='price_color').text
+    description = soup.find('div', id="product_description").find_next_sibling('p').text
+    print(title)
+    print(price)
+    print(description)
+else:
+    print(response.status_code)
 
-news_websites = [
-    'https://www.cnn.com',
-    'https://www.bbc.com',
-    'https://www.nytimes.com',
-    'https://www.foxnews.com',
-    'https://www.theguardian.com',
-    'https://www.nbcnews.com',
-    'https://www.wsj.com',
-    'https://www.usatoday.com',
-    'https://www.reuters.com',
-    'https://www.bloomberg.com',
-    'https://www.apnews.com',
-]
+response = requests.get("https://books.toscrape.com/catalogue/category/books/christian-fiction_34/index.html")
+if response.ok: 
+    content = response.text
+    soup = bs4.BeautifulSoup(content, 'lxml')
+    link = soup.find('a').get('href')
+    print(link)
+else:
+    print(response.status_code)
+    
+# Zadanie:
+# books.toscrape.com
+# Skrypt zbierający z trzech kategorii:
+# - Tytuł
+# - Cenę
+# - Opis
+# Wszystkich książek
