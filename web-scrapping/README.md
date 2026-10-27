@@ -90,13 +90,14 @@ Real-life examples to poke at - each one is a working (or formerly working) scra
 
 Write a standalone script, that scrapes `books.toscrape.com`. Send it to my email.
 
-1. Manually pick **three categories** of your choice (their pages live at `https://books.toscrape.com/catalogue/category/books/[category]/index.html`).
+1. Manually pick **three categories** of your choice (their pages live at `https://books.toscrape.com/catalogue/category/books/[category]/index.html`). Minimum one has to have more than one page.
 2. For **every book** in each of the three categories, collect:
    - the title,
    - the price,
-   - the description.
+   - the description,
+   - how many are available (stock)
 3. Some categories span multiple pages - make sure you collect all the books, not just the first 20. The *next* button at the bottom of the listing is your friend.
 4. The book links on a category page are relative URLs. Combine them with `https://books.toscrape.com/catalogue/` to build URLs you can fetch. ([`urllib.parse.urljoin`](https://docs.python.org/3/library/urllib.parse.html#urllib.parse.urljoin) can do the joining for you.)
 5. Print everything in a readable format, or go the extra mile and save the results to a CSV/JSON file.
 
-**Hint:** everything here is the "Tasks for today" workflow applied to a different URL - a category page is a listing just like the main page, so tasks 3-7 carry over one to one. A loop inside a loop - one over the listing pages, one over the books found on each - will get you very far (following the *next* button is exactly the fetch-a-link-from-the-listing pattern from task 6). **Politeness bonus**: put a small `time.sleep(1)` between requests so you don't hammer the poor fake bookstore.
+**Hint:** everything here is the "Tasks for today" workflow applied to a different URL - a category page is a listing just like the main page, so some tasks carry over one to one. A loop inside a loop - one over the listing pages, one over the books found on each - will get you very far (following the *next* button is exactly the fetch-a-link-from-the-listing pattern from task 6). **Politeness bonus**: put a small `time.sleep(1)` between requests so you don't hammer the poor fake bookstore.
