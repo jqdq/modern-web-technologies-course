@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Does the Cat Die? - daisyUI (components on top of Tailwind)</title>
+  <!-- COMBO approach: daisyUI ships component classes (card, btn, badge...)
+       but they are built FROM Tailwind utilities - so you can mix both levels:
+       class="card bg-base-100"  =  a component + a utility on the same element. -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-base-200 min-h-screen">
+
+  <div class="navbar bg-base-100 shadow-sm">
+    <div class="flex-1">
+      <span class="text-lg font-bold">Does the Cat Die?</span>
+    </div>
+    <div class="flex-none gap-2">
+      <a href="#" class="btn btn-primary btn-sm">Login</a>
+    </div>
+  </div>
+
+  <main class="mx-auto max-w-3xl px-4 py-8">
+    <h1 class="text-4xl font-bold">Does the Cat Die?</h1>
+    <p class="text-base-content/60">A blatant copy of "Does the Dog Die?"</p>
+
+    <form class="mt-6 join w-full">
+      <input type="text" placeholder="Enter title..." class="input input-bordered join-item w-full" />
+      <button type="submit" class="btn btn-primary join-item">Search</button>
+    </form>
+
+    <h2 class="mt-10 text-2xl font-semibold">Popular movies</h2>
+
+    <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+
+      <div class="card bg-base-100 shadow">
+        <div class="card-body">
+          <h3 class="card-title">Shrek
+            <div class="badge badge-success">7.9</div>
+          </h3>
+          <p>A mean lord exiles fairytale creatures to the swamp of a grumpy ogre.</p>
+          <div class="card-actions justify-between items-center">
+            <small>Cat dies: <b class="text-success">no</b></small>
+            <a href="#" class="btn btn-outline btn-sm">Details</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card bg-base-100 shadow">
+        <div class="card-body">
+          <h3 class="card-title">Jurassic Park
+            <div class="badge badge-success">8.2</div>
+          </h3>
+          <p>Dinosaurs are cloned from prehistoric DNA and run amok.</p>
+          <div class="card-actions justify-between items-center">
+            <small>Cat dies: <b class="text-success">no</b></small>
+            <a href="#" class="btn btn-outline btn-sm">Details</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card bg-base-100 shadow">
+        <div class="card-body">
+          <h3 class="card-title">The Ring
+            <div class="badge badge-success">7.0</div>
+          </h3>
+          <p>A journalist investigates a cursed videotape.</p>
+          <div class="card-actions justify-between items-center">
+            <small>Cat dies: <b class="text-error">yes</b></small>
+            <a href="#" class="btn btn-outline btn-sm">Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- TASKS:
+       1. Theming for free: change data-theme above to "dark", "cupcake",
+          "dracula"... (list: https://daisyui.com/docs/themes/)
+          Compare with how much CSS that took in 02-frameworks-pico.html.
+       2. Mix levels: add a raw Tailwind utility to a daisyUI component,
+          e.g. make one card border-dashed. -->
+</body>
+
+</html>

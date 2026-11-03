@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Does the Cat Die? - Pico (classless)</title>
+  <!-- Full Pico build. Count how few classes the body below needs. -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <style>
+    /* All our own CSS so far. Two variables recolor the whole theme. */
+    :root {
+      --pico-primary: #b3475f;
+      --pico-primary-background: #b3475f;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Pico's philosophy: write semantic HTML, the framework does the rest.
+       nav, main, article, hgroup, footer all get styles for free. -->
+  <main class="container">
+    <nav>
+      <ul>
+        <li><strong>Does the Cat Die?</strong></li>
+      </ul>
+      <ul>
+        <li><a href="#" role="button">Login</a></li>
+      </ul>
+    </nav>
+
+    <hgroup>
+      <h1>Does the Cat Die?</h1>
+      <p>A blatant copy of "Does the Dog Die?"</p>
+    </hgroup>
+
+    <section id="search">
+      <!-- No classes at all: inputs and buttons are styled by tag name -->
+      <form>
+        <input type="search" name="query" placeholder="Enter title..." aria-label="Search">
+        <button type="submit">Search</button>
+      </form>
+    </section>
+
+    <section id="movies">
+      <h2>Popular movies</h2>
+
+      <div class="grid">
+        <!-- <article> IS the card in Pico: border, padding, shadow, rounded -->
+        <article>
+          <h3>Shrek <mark>7.9</mark></h3>
+          <p>A mean lord exiles fairytale creatures to the swamp of a grumpy ogre.</p>
+          <footer>
+            <small>Cat dies: <b>no</b></small>
+            <a href="#" role="button" class="outline">Details</a>
+          </footer>
+        </article>
+
+        <article>
+          <h3>Jurassic Park <mark>8.2</mark></h3>
+          <p>Dinosaurs are cloned from prehistoric DNA and run amok.</p>
+          <footer>
+            <small>Cat dies: <b>no</b></small>
+            <a href="#" role="button" class="outline">Details</a>
+          </footer>
+        </article>
+
+        <article>
+          <h3>The Ring <mark>7.0</mark></h3>
+          <p>A journalist investigates a cursed videotape.</p>
+          <footer>
+            <small>Cat dies: <b>yes</b></small>
+            <a href="#" role="button" class="outline">Details</a>
+          </footer>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- TASKS (details in the README):
+       1. Add an email input and a rating <select> to the form - zero CSS needed.
+       2. Add a "searching..." button: <button aria-busy="true">.
+       3. Set data-theme="dark" on the <html> tag - then remove it and see why
+          the page switches back (prefers-color-scheme).
+       4. Change the two --pico-primary variables above. -->
+</body>
+
+</html>

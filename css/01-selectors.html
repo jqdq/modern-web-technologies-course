@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS Selectors - Books to Scrape (unstyled)</title>
+  <style>
+    /* SELECTORS CHEAT SHEET - the same syntax you used in soup.select().
+         p                    element
+         .price_color         class
+         article p            descendant (any depth)
+         h3 + p               next sibling (the one right after)
+         p.star-rating.Three  element with BOTH classes
+         a[href$=".pdf"]      attribute ending with ".pdf"
+         a:hover              pseudo-class (state)
+         #id                  id - BEATS any class or element selector
+
+       TASKS are in the comment block below - add your rules under it,
+       one selector per task, don't touch the HTML. */
+
+    /* --- worked examples: read them, then do the tasks --- */
+
+    /* element selector + a few properties */
+    body {
+      font-family: system-ui, sans-serif;
+      margin: 0 auto;
+      max-width: 960px;
+      padding: 0 1rem;
+      background: #f8f8f6;
+    }
+
+    /* class selector */
+    .page_header {
+      color: #4a4a4a;
+      border-bottom: 2px solid #4a4a4a;
+    }
+
+    /* descendant selector: only links INSIDE the sidebar */
+    aside a {
+      color: #8a6d3b;
+      text-decoration: none;
+    }
+
+    /* pseudo-class: state */
+    a:hover {
+      color: #d9534f;
+    }
+
+    /* --- TASKS --- */
+
+    /* 1. Prices red (crimson). The price is a <p> with a class. */
+
+    /* 2. Links inside product cards: no underline, dark gray.
+          The path is article.product_pod > h3 > a. */
+
+    /* 3. Only the 3-star ratings yellow: the <p> has class="star-rating Three". */
+
+    /* 4. On hover, product cards get a border. */
+
+    /* 5. Links to PDFs (href ending in ".pdf") green. */
+
+    /* 6. Specificity: one card has id="bestseller". Write
+          #bestseller { color: teal; } and watch it win over rules 1-4 -
+          even though they come earlier. Then write
+          article.product_pod#bestseller { color: orange; } - even more
+          specific. Order: inline style > id > class > element.
+          Play with the calculator: https://specificity.keegan.st */
+
+    /* 7. Cool tool for training your eyes to read selectors: https://flukeout.github.io/ */
+  </style>
+</head>
+
+<body>
+  <h1 class="page_header">Books to Scrape (plain HTML edition)</h1>
+
+  <aside class="side_categories">
+    <ul>
+      <li><a href="#fiction">Fiction</a></li>
+      <li><a href="#travel">Travel</a></li>
+      <li><a href="http://books.toscrape.com/catalogue/category/books/nonfiction_13/index.html">Nonfiction (external)</a></li>
+      <li><a href="imgw-warnings.pdf">A random PDF</a></li>
+    </ul>
+  </aside>
+
+  <section class="product-list">
+    <article class="product_pod" id="bestseller">
+      <h3><a href="a-light-in-the-attic_1000/index.html">A Light in the Attic</a></h3>
+      <p class="price_color">£51.77</p>
+      <p class="star-rating Three">Three</p>
+    </article>
+
+    <article class="product_pod">
+      <h3><a href="tipping-the-velvet_999/index.html">Tipping the Velvet</a></h3>
+      <p class="price_color">£53.74</p>
+      <p class="star-rating One">One</p>
+    </article>
+
+    <article class="product_pod">
+      <h3><a href="sapiens_996/index.html">Sapiens: A Brief History of Humankind</a></h3>
+      <p class="price_color">£54.23</p>
+      <p class="star-rating Three">Three</p>
+    </article>
+
+    <article class="product_pod">
+      <h3><a href="the-grand-design_405/index.html">The Grand Design</a></h3>
+      <p class="price_color">£33.63</p>
+      <p class="star-rating Five">Five</p>
+    </article>
+  </section>
+</body>
+
+</html>

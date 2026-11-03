@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Does the Cat Die? - Tailwind (utility)</title>
+  <!-- Utility framework: no components, just ~100 single-purpose classes
+       (bg-blue-500, p-4, text-sm...) that you compose on every element. -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<!-- The SAME page as 02-frameworks-pico.html and 04-frameworks-bootstrap.html.
+     Compare the markup: every styling decision is a class right here. -->
+<body class="bg-gray-50 text-gray-800">
+
+  <nav class="flex items-center justify-between px-6 py-3 bg-white shadow">
+    <strong class="text-lg">Does the Cat Die?</strong>
+    <div class="flex gap-4">
+      <a href="#"
+        class="rounded bg-blue-600 px-3 py-1.5 text-white hover:bg-blue-500">Login</a>
+    </div>
+  </nav>
+
+  <main class="mx-auto max-w-3xl px-4 py-8">
+    <h1 class="text-4xl font-bold">Does the Cat Die?</h1>
+    <p class="mt-1 text-gray-500">A blatant copy of "Does the Dog Die?"</p>
+
+    <section class="mt-6 flex gap-2">
+      <input type="text" placeholder="Enter title..."
+        class="w-full rounded border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none">
+      <button class="rounded bg-blue-600 px-4 py-2 font-medium text-white hover:bg-blue-500">
+        Search
+      </button>
+    </section>
+
+    <h2 class="mt-10 text-2xl font-semibold">Popular movies</h2>
+
+    <!-- Responsive: 1 column on phones, 2 from sm, 3 from lg. -->
+    <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+
+      <div class="rounded-lg border bg-white p-4 shadow-sm">
+        <h3 class="text-xl font-semibold">Shrek
+          <span class="rounded bg-green-100 px-1.5 text-sm text-green-700">7.9</span>
+        </h3>
+        <p class="mt-2 text-sm text-gray-600">A mean lord exiles fairytale creatures to the swamp of a grumpy ogre.</p>
+        <div class="mt-4 flex items-center justify-between">
+          <small class="text-gray-500">Cat dies: <b class="text-green-600">no</b></small>
+          <a href="#" class="text-sm font-medium text-blue-600 hover:underline">Details →</a>
+        </div>
+      </div>
+
+      <div class="rounded-lg border bg-white p-4 shadow-sm">
+        <h3 class="text-xl font-semibold">Jurassic Park
+          <span class="rounded bg-green-100 px-1.5 text-sm text-green-700">8.2</span>
+        </h3>
+        <p class="mt-2 text-sm text-gray-600">Dinosaurs are cloned from prehistoric DNA and run amok.</p>
+        <div class="mt-4 flex items-center justify-between">
+          <small class="text-gray-500">Cat dies: <b class="text-green-600">no</b></small>
+          <a href="#" class="text-sm font-medium text-blue-600 hover:underline">Details →</a>
+        </div>
+      </div>
+
+      <div class="rounded-lg border bg-white p-4 shadow-sm">
+        <h3 class="text-xl font-semibold">The Ring
+          <span class="rounded bg-green-100 px-1.5 text-sm text-green-700">7.0</span>
+        </h3>
+        <p class="mt-2 text-sm text-gray-600">A journalist investigates a cursed videotape.</p>
+        <div class="mt-4 flex items-center justify-between">
+          <small class="text-gray-500">Cat dies: <b class="text-red-600">yes</b></small>
+          <a href="#" class="text-sm font-medium text-blue-600 hover:underline">Details →</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- TASKS:
+       1. Make the "yes" badge red instead of green - which class names change?
+          (docs: https://tailwindcss.com/docs/background-color)
+       2. No component list, no .css file - utilities only:
+          https://tailwindcss.com/docs Try rounding the card corners fully
+          (rounded-2xl) and centering the h1 (text-center). -->
+</body>
+
+</html>

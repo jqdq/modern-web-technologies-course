@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Responsive Pico - containers, grids, media queries</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+</head>
+
+<body>
+  <main class="container">
+    <hgroup>
+      <h1>Responsive Pico</h1>
+      <p>Open DevTools (<kbd>F12</kbd>) → device toolbar (<kbd>Ctrl+Shift+M</kbd>) → drag the "Responsive" width.
+        Watch what changes. That is how you test every screen size from one window.</p>
+    </hgroup>
+
+    <!-- ============ 1. CONTAINERS ============
+         .container is centered with a FIXED max width per breakpoint:
+
+           <576px → 100%    ≥768px → 700px    ≥1280px → 1200px
+           ≥576px → 510px   ≥1024px → 950px   ≥1536px → 1450px
+
+         .container-fluid = always 100% width. (In the classless build these
+         classes don't exist - <main> is the container automatically.) -->
+    <section>
+      <h2>1. Container</h2>
+      <p id="width-indicator">viewport width: …</p>
+      <div class="container" style="border: 2px solid var(--pico-primary); padding: 0.5rem;">
+        I'm inside <code>.container</code> - my width stops growing at each breakpoint.
+      </div>
+      <div class="container-fluid" style="border: 2px dashed var(--pico-secondary); padding: 0.5rem; margin-top: 0.5rem;">
+        I'm inside <code>.container-fluid</code> - I fill everything.
+      </div>
+    </section>
+
+    <!-- ============ 2. PICO'S GRID ============
+         .grid is deliberately minimal: the number of children IS the number
+         of columns, and everything collapses to one column below 768px. -->
+    <section>
+      <h2>2. Pico <code>.grid</code></h2>
+      <div class="grid">
+        <div style="border: 1px solid var(--pico-muted-border-color); padding: 0.5rem; text-align: center;">1</div>
+        <div style="border: 1px solid var(--pico-muted-border-color); padding: 0.5rem; text-align: center;">2</div>
+        <div style="border: 1px solid var(--pico-muted-border-color); padding: 0.5rem; text-align: center;">3</div>
+        <div style="border: 1px solid var(--pico-muted-border-color); padding: 0.5rem; text-align: center;">4</div>
+      </div>
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Does the Cat Die? - Bootstrap (components)</title>
+  <!-- Component framework: the framework ships finished widgets
+       (card, btn, badge, navbar). You assemble them with classes.
+       Same files you already have in the bootstrap/ folder. -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+<body class="bg-light">
+
+  <nav class="navbar bg-white border-bottom">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 h1">Does the Cat Die?</span>
+      <div class="d-flex gap-3">
+        <a href="#" class="btn btn-primary">Login</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container py-4">
+    <h1>Does the Cat Die?</h1>
+    <p class="text-muted">A blatant copy of "Does the Dog Die?"</p>
+
+    <form class="row g-2">
+      <div class="col-md-10">
+        <input type="text" class="form-control" placeholder="Enter title...">
+      </div>
+      <div class="col-md-2">
+        <button type="submit" class="btn btn-primary w-100">Search</button>
+      </div>
+    </form>
+
+    <h2 class="mt-4 mb-3">Popular movies</h2>
+
+    <!-- Bootstrap grid: 12 columns, col-md-4 = 1/3 width from md (768px) up.
+         Same breakpoint idea as Pico's .grid or Tailwind's grid-cols-*. -->
+    <div class="row g-3">
+
+      <div class="col-md-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Shrek <span class="badge bg-success">7.9</span></h5>
+            <p class="card-text">A mean lord exiles fairytale creatures to the swamp of a grumpy ogre.</p>
+          </div>
+          <div class="card-footer d-flex justify-content-between align-items-center">
+            <small>Cat dies: <b class="text-success">no</b></small>
+            <a href="#" class="btn btn-outline-primary btn-sm">Details</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Jurassic Park <span class="badge bg-success">8.2</span></h5>
+            <p class="card-text">Dinosaurs are cloned from prehistoric DNA and run amok.</p>
+          </div>
+          <div class="card-footer d-flex justify-content-between align-items-center">
+            <small>Cat dies: <b class="text-success">no</b></small>
+            <a href="#" class="btn btn-outline-primary btn-sm">Details</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">The Ring <span class="badge bg-success">7.0</span></h5>
+            <p class="card-text">A journalist investigates a cursed videotape.</p>
+          </div>
+          <div class="card-footer d-flex justify-content-between align-items-center">
+            <small>Cat dies: <b class="text-danger">yes</b></small>
+            <a href="#" class="btn btn-outline-primary btn-sm">Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- TASKS:
+       1. Make the badges match the cat status: red for "yes" cards.
+          (docs: https://getbootstrap.com/docs/5.3/components/badge/)
+       2. col-md-4: resize with the device toolbar (Ctrl+Shift+M). At which
+          width do the cards stack? Compare with 02 (Pico .grid) and 03
+          (Tailwind sm:grid-cols-2) - same breakpoints, different syntax. -->
+</body>
+
+</html>
