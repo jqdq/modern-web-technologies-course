@@ -1,28 +1,22 @@
 {% extends "base.html" %}
-{% block title %}New movie - Does the Cat Die?{% endblock %}
 
-{% block content %}
+{% block main %}
 <h1>Add Movie</h1>
 <form action="" method="post">
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            <h2>Wystąpił błąd:</h2>
-            <ul class="flashes">
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-            </ul>
-        {% endif %}
-    {% endwith %}
-
     <label for="title">Title:</label>
     <input type="text" id="title" name="title" required><br><br>
 
-    <label for="tag">Tags:</label>
-    <input type="text" id="tag" name="tag"><br><br>
+    <label for="rating">Rating (0-10):</label>
+    <input type="number" id="rating" name="rating" min="0" max="10" step="0.1" required><br><br>
 
-    <label for="award">Awards:</label>
-    <input type="text" id="award" name="award"><br><br>
+    <label for="description">Description:</label>
+    <textarea id="description" name="description" rows="3" cols="40"></textarea><br><br>
+
+    <label for="owner_review">Site Owner's Review:</label>
+    <textarea id="owner_review" name="owner_review" rows="3" cols="40"></textarea><br><br>
+
+    <label for="length_seconds">Length (seconds):</label>
+    <input type="number" id="length_seconds" name="length_seconds" min="0" required><br><br>
 
     <label for="cat_death">Cat Death:</label>
     <input type="checkbox" id="cat_death" name="cat_death"><br><br>
@@ -36,7 +30,6 @@
     <label for="jump_scares">Jump Scares:</label>
     <input type="checkbox" id="jump_scares" name="jump_scares"><br><br>
 
-    <input type="hidden" name="csrf_token" value = "{{ csrf_token() }}"/>
     <input type="submit" value="Add Movie">
 </form>
 {% endblock %}

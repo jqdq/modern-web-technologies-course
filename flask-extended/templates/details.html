@@ -1,65 +1,51 @@
 {% extends "base.html" %}
-{% block title %}{{ movie.name}} - Does the Cat Die?{% endblock %}
 
-{% block content %}
-<h1>{{ movie.name }}</h1>
-<!-- Creator is only shown if set and user is logged in, g.user is set in auth.py after login -->
-{% if movie.created_by.username and g.user %}
-<p>Record added by: {{ movie.created_by.username }}</p>
-{% endif %}
-<ul>
-    <li>
-        Cat Death:
+{% block title %}
+{{ movie.title }} - Does the Cat Die?
+{% endblock %}
+
+{% block main %}
+<h1>{{ movie.title }}</h1>
+
+<section class="movie-info">
+  <p class="rating">Rating: {{ movie.rating }}</p>
+  <p class="description">{{ movie.description }}</p>
+  <p class="length">Runtime: {{ runtime_h|round(1) }} hours</p>
+</section>
+
+<section class="owner-review">
+  <h2>Site Owner's Review</h2>
+  <p>{{ movie.owner_review }}</p>
+</section>
+
+<section class="warnings">
+  <h2>Content Warnings</h2>
+  <ul>
+    <li>Cat Death: 
         {% if movie.cat_death %}
-            Yes
+        Yes
         {% else %}
-            No
+        No
         {% endif %}
     </li>
-    <li>
-        Violence:
+    <li>Violence: 
         {% if movie.violence %}
-            Yes
+        Yes
         {% else %}
-            No
-        {% endif %}
-    </li>
-    <li>
-        Loud Noises:
+        No
+        {% endif %}</li>
+    <li>Loud Noises: 
         {% if movie.loud_noises %}
-            Yes
+        Yes
         {% else %}
-            No
-        {% endif %}    
-    </li>
-    <li>
-        Jump Scares:
+        No
+        {% endif %}</li>
+    <li>Jump Scares: 
         {% if movie.jump_scares %}
-            Yes
+        Yes
         {% else %}
-            No
-        {% endif %}    
-    </li>
-</ul>
-<!--
-    You can use some methods inside Jinja:
-    https://jinja.palletsprojects.com/en/stable/templates/#list-of-builtin-filters
--->
-{% if movie.tags|length > 0 %}
-<h2>Tags:</h2>
-{% endif %}
-<!-- Note we can iter over movie.tags and movie.awards because of the relationship defined in the Movie model -->
-<ul>
-    {% for tag in movie.tags %}
-        <li><a href="{{url_for('movie_tag', tag_id=tag.id)}}">{{ tag.tag_name }}</a></li>
-    {% endfor %}
-</ul>
-{% if movie.awards|length > 0 %} 
-<h2>Awards:</h2>
-{% endif %}
-<ul>
-    {% for award in movie.awards %}
-        <li>{{ award.award_name }}</li>
-    {% endfor %}
-</ul>
+        No
+        {% endif %}</li>
+  </ul>
+</section>
 {% endblock %}

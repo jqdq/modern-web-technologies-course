@@ -1,10 +1,25 @@
 {% extends "base.html" %}
 
-{% block content %}
+{% block title %}
+Search for "{{ query }}"
+{% endblock %}
 
-{% for movie in results %}
+{% block main %}
+<h2>Search results for "{{ query }}":</h2>
+
+{% for movie in movies %}
 <article>
-    <a href="{{ url_for('details_page', movie_id=movie['id']) }}">{{ movie['name'] }}</a>
+    <a href="{{ url_for("movie_details", name=movie.title) }}">
+        {{ movie.title }}
+    </a>
+    <p class="rating">Rating: {{movie.rating}}</p>
+    <p class="description">{{ movie.description }}</p>
+    <p class="length">
+        Runtime: {{ (movie.length_seconds/3600)|round(1) }}
+         hours
+    </p>
 </article>
+{% else %}
+<article>No results</article>
 {% endfor %}
 {% endblock %}
